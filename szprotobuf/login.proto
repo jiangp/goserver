@@ -8,7 +8,7 @@ message ReqLoginInfo
     uint32 logintype = 1;   //1-FB, 2-游客
     int64 userid = 2;       //之前登录过用户的uid
     uint32 othertype = 3;   //第三登录方式：0、fb
-    int64 faceid = 4;       //绑定的第三方id
+    string faceid = 4;       //绑定的第三方id
     string token = 5;       //绑定的第三方token
     string imei = 6;        //设备硬件信息//必传
     string machine = 7;     //机器类型

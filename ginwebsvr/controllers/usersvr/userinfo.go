@@ -2,6 +2,7 @@ package usersvr
 
 import (
 	"ginwebsvr/ginit"
+	"ginwebsvr/logic"
 	"ginwebsvr/utils"
 	"net/http"
 	"szprotobuf"
@@ -9,11 +10,6 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-type ReqUserInfo struct {
-	UserId int64  `form:"userid" json:"userid" binding:"required"`
-	Token  string `form:"token" json:"token" binding:"required"`
-	//Data   []byte `form:"data" json:"data"`
-}
 
 func GetUserInfo(c *gin.Context){
 	var Reqdata szprotobuf.ReqUserInfo
@@ -30,7 +26,7 @@ func GetUserInfo(c *gin.Context){
 			return
 		}
 
-		Resdata := HandleFunc(&Reqdata)
+		Resdata := logic.UserInfo(&Reqdata)
 		c.ProtoBuf(http.StatusOK, Resdata)
 
 	} else {
@@ -43,14 +39,4 @@ func GetUserInfo(c *gin.Context){
 	}
 }
 
-func HandleFunc(Reqdata *szprotobuf.ReqUserInfo) (Resdata szprotobuf.ResUserInfo) {
-	for{
-		//查询用户信息
-		Resdata = szprotobuf.ResUserInfo{
-			Code:200,
-			Msg:"",
-		}
-		break
-	}
-	return Resdata
-}
+

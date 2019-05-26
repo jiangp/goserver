@@ -1,7 +1,7 @@
 package ginit
 
 import (
-	"git.workec.com/scribe"
+	"ginwebsvr/scribe"
 	"os"
 )
 
