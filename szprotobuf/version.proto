@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package szprotobuf;
+
+
+//Req
+message ReqVersion {
+	uint32 logintype = 1;   //1-FB, 2-游客
+	uint32 plattype = 2;        // 1-安卓 2-ios ...
+	uint32 gametype = 3;    //游戏类型 0 初始游戏
+	uint32 version = 4;     //版本号 //版本相同不用返回数据
+}
+
+
+//Res
+message ResVersionInfo
+{
+    int32 code = 1;
+    string msg = 2;
+    ResVersionData data = 3;
+}
+
+message ResVersionData  {
+	uint32 curversion = 1;
+	string vartitle = 2;
+	string varmessage  =3;
+	uint32 isforce  = 4;
+	string updateurl  = 5;
+	ResNotification Notifi = 6;  //停服公告
+}
+
+message ResNotification{
+   uint32 id = 1;
+   string title = 2;
+   string content = 3;
+   int64 starttime = 4;
+   int64 endtime = 5;
+}

@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package szprotobuf;
+
+//Req userinfo
+message ReqUserInfo
+{
+    int64 userid = 1;       //当前账户uid
+    string svrtoken = 2;    //当前账户当次登录token
+}
+
+
+message ResUserInfo
+{
+    int32 code = 1; //200 成功 其他错误
+    string msg = 2; //错误描述
+}

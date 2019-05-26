@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+package szprotobuf;
+
+//Req
+message ReqLoginInfo
+{
+    uint32 logintype = 1;   //1-FB, 2-游客
+    int64 userid = 2;       //之前登录过用户的uid
+    uint32 othertype = 3;   //第三登录方式：0、fb
+    int64 faceid = 4;       //绑定的第三方id
+    string token = 5;       //绑定的第三方token
+    string imei = 6;        //设备硬件信息//必传
+    string machine = 7;     //机器类型
+    string operation= 8;    //操作系统
+    string nickname = 9;    //游客的昵称 当uid 小于1000时（新用户）存储用户名称
+}
+
+//Res
+message ResLoginInfo
+{
+    int32 code = 1; //200 成功 其他错误
+    string msg = 2; //错误描述
+    ResLoginData data = 3; //数据体
+}
+
+message ResLoginData
+{
+    int64 nowtime = 1;
+    int64 userid = 2;       //当前账户uid
+    string svrtoken = 3;    //当前账户当次登录token
+    string nickname = 4;    //用户昵称
+}
+
